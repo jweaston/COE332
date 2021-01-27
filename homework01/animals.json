@@ -1,0 +1,142 @@
+[
+    {
+        "head": "raven",
+        "body": "louse-moth",
+        "arms": 3,
+        "legs": 7,
+        "tails": 10
+    },
+    {
+        "head": "snake",
+        "body": "foal-snake",
+        "arms": 3,
+        "legs": 10,
+        "tails": 13
+    },
+    {
+        "head": "raven",
+        "body": "pig-goat",
+        "arms": 7,
+        "legs": 6,
+        "tails": 13
+    },
+    {
+        "head": "raven",
+        "body": "guinea-gopher",
+        "arms": 6,
+        "legs": 11,
+        "tails": 17
+    },
+    {
+        "head": "raven",
+        "body": "chimp-racer",
+        "arms": 4,
+        "legs": 10,
+        "tails": 14
+    },
+    {
+        "head": "snake",
+        "body": "impala-pup",
+        "arms": 3,
+        "legs": 3,
+        "tails": 6
+    },
+    {
+        "head": "snake",
+        "body": "lab-toucan",
+        "arms": 7,
+        "legs": 10,
+        "tails": 17
+    },
+    {
+        "head": "bull",
+        "body": "frog-teal",
+        "arms": 3,
+        "legs": 4,
+        "tails": 7
+    },
+    {
+        "head": "snake",
+        "body": "slug-badger",
+        "arms": 10,
+        "legs": 3,
+        "tails": 13
+    },
+    {
+        "head": "bunny",
+        "body": "hare-seal",
+        "arms": 2,
+        "legs": 11,
+        "tails": 13
+    },
+    {
+        "head": "bull",
+        "body": "stag-macaw",
+        "arms": 5,
+        "legs": 5,
+        "tails": 10
+    },
+    {
+        "head": "bull",
+        "body": "quail-grouse",
+        "arms": 6,
+        "legs": 7,
+        "tails": 13
+    },
+    {
+        "head": "bunny",
+        "body": "fox-owl",
+        "arms": 8,
+        "legs": 7,
+        "tails": 15
+    },
+    {
+        "head": "bull",
+        "body": "collie-ant",
+        "arms": 2,
+        "legs": 5,
+        "tails": 7
+    },
+    {
+        "head": "bunny",
+        "body": "jaguar-condor",
+        "arms": 5,
+        "legs": 11,
+        "tails": 16
+    },
+    {
+        "head": "bull",
+        "body": "snail-rodent",
+        "arms": 6,
+        "legs": 4,
+        "tails": 10
+    },
+    {
+        "head": "snake",
+        "body": "jay-goat",
+        "arms": 10,
+        "legs": 7,
+        "tails": 17
+    },
+    {
+        "head": "snake",
+        "body": "colt-turtle",
+        "arms": 9,
+        "legs": 4,
+        "tails": 13
+    },
+    {
+        "head": "bunny",
+        "body": "crane-gnu",
+        "arms": 6,
+        "legs": 9,
+        "tails": 15
+    },
+    {
+        "head": "bunny",
+        "body": "bat-cicada",
+        "arms": 3,
+        "legs": 12,
+        "tails": 15
+    }
+]
