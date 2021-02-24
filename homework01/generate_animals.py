@@ -10,8 +10,8 @@ for i in range(20):
 
     animal["head"] = heads[random.randint(0,3)]
     animal["body"] = petname.name() + "-" + petname.name()
-    animal["arms"] = random.randint(2,10)
-    animal["legs"] = random.randint(3,12)
+    animal["arms"] = random.randint(1,5)*2
+    animal["legs"] = random.randint(1,4)*3
     animal["tails"] = animal['arms'] + animal['legs']
     animals.append(animal.copy())
 

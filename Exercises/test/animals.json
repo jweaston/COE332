@@ -1,0 +1,142 @@
+[
+    {
+        "head": "bull",
+        "body": "piglet-sole",
+        "arms": 5,
+        "legs": 5,
+        "tails": 10
+    },
+    {
+        "head": "bunny",
+        "body": "chow-zebra",
+        "arms": 5,
+        "legs": 7,
+        "tails": 12
+    },
+    {
+        "head": "bunny",
+        "body": "kodiak-bug",
+        "arms": 4,
+        "legs": 11,
+        "tails": 15
+    },
+    {
+        "head": "bull",
+        "body": "ox-elk",
+        "arms": 8,
+        "legs": 3,
+        "tails": 11
+    },
+    {
+        "head": "snake",
+        "body": "oriole-wasp",
+        "arms": 4,
+        "legs": 9,
+        "tails": 13
+    },
+    {
+        "head": "raven",
+        "body": "cougar-pup",
+        "arms": 10,
+        "legs": 8,
+        "tails": 18
+    },
+    {
+        "head": "snake",
+        "body": "pika-eagle",
+        "arms": 3,
+        "legs": 10,
+        "tails": 13
+    },
+    {
+        "head": "raven",
+        "body": "kiwi-owl",
+        "arms": 6,
+        "legs": 12,
+        "tails": 18
+    },
+    {
+        "head": "bunny",
+        "body": "cattle-akita",
+        "arms": 3,
+        "legs": 8,
+        "tails": 11
+    },
+    {
+        "head": "raven",
+        "body": "leech-moray",
+        "arms": 7,
+        "legs": 9,
+        "tails": 16
+    },
+    {
+        "head": "bunny",
+        "body": "sheep-parrot",
+        "arms": 6,
+        "legs": 10,
+        "tails": 16
+    },
+    {
+        "head": "bunny",
+        "body": "insect-tomcat",
+        "arms": 8,
+        "legs": 10,
+        "tails": 18
+    },
+    {
+        "head": "bull",
+        "body": "quagga-ibex",
+        "arms": 6,
+        "legs": 3,
+        "tails": 9
+    },
+    {
+        "head": "snake",
+        "body": "mouse-owl",
+        "arms": 3,
+        "legs": 7,
+        "tails": 10
+    },
+    {
+        "head": "bunny",
+        "body": "earwig-jay",
+        "arms": 2,
+        "legs": 5,
+        "tails": 7
+    },
+    {
+        "head": "bunny",
+        "body": "zebra-rhino",
+        "arms": 7,
+        "legs": 3,
+        "tails": 10
+    },
+    {
+        "head": "snake",
+        "body": "baboon-minnow",
+        "arms": 9,
+        "legs": 12,
+        "tails": 21
+    },
+    {
+        "head": "raven",
+        "body": "dove-tiger",
+        "arms": 7,
+        "legs": 6,
+        "tails": 13
+    },
+    {
+        "head": "snake",
+        "body": "ferret-bunny",
+        "arms": 4,
+        "legs": 11,
+        "tails": 15
+    },
+    {
+        "head": "snake",
+        "body": "kitten-quail",
+        "arms": 10,
+        "legs": 8,
+        "tails": 18
+    }
+]
