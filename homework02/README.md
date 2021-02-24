@@ -1,8 +1,8 @@
 # Homework 2
 ---
-generate\_animals.py randomly generates 20 animal hybrids and stores them in a json that lists out their features.It takes a parameter that is the name of the file you wish to write to.  
+generate\_animals.py randomly generates 20 animal hybrids and stores them in a json that lists out their features. It takes a parameter that is the name of the file you wish to write to.  
 
-read\_animals.py prints out 1 randomly selected animal from the json file made using. It takes the file name as a parameter when called. It then will choose to random parents from the list and will breed to make a child, which combines the heads and bodies of the parents and has the average number of arms and legs from the parents and the number of tails is the sum of the number of arms and legs.
+read\_animals.py prints out 1 randomly selected animal from the json file made using. It then will choose to random parents from the list and will breed to make a child, which combines the heads and bodies of the parents and has the average number of arms and legs from the parents and the number of tails is the sum of the number of arms and legs. It takes the file name as a parameter when called. 
 
 ---
 ## Downloading and Running Directly
