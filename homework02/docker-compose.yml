@@ -1,0 +1,19 @@
+---
+version: "3"
+
+services:
+    # this runs the generate_animals.py script
+    gen-anim:
+        image: jweaston/json-parser:1.0
+        user: "869939:816966"
+        volumes:
+            - ./test:/data
+        command: generate_animals.py /data/animalsList.json
+    # this runs the read_animals.py script
+    read-anim:
+        image: jweaston/json-parser:1.0
+        user: "869939:816966"
+        volumes:
+            - ./test:/data
+        command: read_animals.py /data/animalsList.json
+...

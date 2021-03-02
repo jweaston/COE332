@@ -1,0 +1,142 @@
+[
+    {
+        "head": "bunny",
+        "body": "quagga-weasel",
+        "arms": 9,
+        "legs": 6,
+        "tails": 15
+    },
+    {
+        "head": "raven",
+        "body": "guinea-drake",
+        "arms": 10,
+        "legs": 9,
+        "tails": 19
+    },
+    {
+        "head": "bunny",
+        "body": "turtle-chimp",
+        "arms": 5,
+        "legs": 10,
+        "tails": 15
+    },
+    {
+        "head": "bull",
+        "body": "mole-horse",
+        "arms": 3,
+        "legs": 9,
+        "tails": 12
+    },
+    {
+        "head": "snake",
+        "body": "duck-worm",
+        "arms": 10,
+        "legs": 3,
+        "tails": 13
+    },
+    {
+        "head": "raven",
+        "body": "tahr-pika",
+        "arms": 10,
+        "legs": 7,
+        "tails": 17
+    },
+    {
+        "head": "bunny",
+        "body": "wren-jaguar",
+        "arms": 7,
+        "legs": 11,
+        "tails": 18
+    },
+    {
+        "head": "raven",
+        "body": "rhino-mammal",
+        "arms": 3,
+        "legs": 4,
+        "tails": 7
+    },
+    {
+        "head": "bunny",
+        "body": "bison-lamb",
+        "arms": 10,
+        "legs": 11,
+        "tails": 21
+    },
+    {
+        "head": "raven",
+        "body": "tomcat-moray",
+        "arms": 4,
+        "legs": 11,
+        "tails": 15
+    },
+    {
+        "head": "bull",
+        "body": "man-cattle",
+        "arms": 7,
+        "legs": 6,
+        "tails": 13
+    },
+    {
+        "head": "raven",
+        "body": "whale-gnat",
+        "arms": 9,
+        "legs": 10,
+        "tails": 19
+    },
+    {
+        "head": "bunny",
+        "body": "tuna-eel",
+        "arms": 8,
+        "legs": 3,
+        "tails": 11
+    },
+    {
+        "head": "snake",
+        "body": "eel-marlin",
+        "arms": 5,
+        "legs": 10,
+        "tails": 15
+    },
+    {
+        "head": "bunny",
+        "body": "walrus-asp",
+        "arms": 10,
+        "legs": 12,
+        "tails": 22
+    },
+    {
+        "head": "bunny",
+        "body": "collie-mako",
+        "arms": 5,
+        "legs": 5,
+        "tails": 10
+    },
+    {
+        "head": "bull",
+        "body": "tahr-coyote",
+        "arms": 8,
+        "legs": 5,
+        "tails": 13
+    },
+    {
+        "head": "bunny",
+        "body": "husky-gibbon",
+        "arms": 6,
+        "legs": 11,
+        "tails": 17
+    },
+    {
+        "head": "snake",
+        "body": "teal-lizard",
+        "arms": 8,
+        "legs": 11,
+        "tails": 19
+    },
+    {
+        "head": "raven",
+        "body": "pigeon-emu",
+        "arms": 5,
+        "legs": 11,
+        "tails": 16
+    }
+]
