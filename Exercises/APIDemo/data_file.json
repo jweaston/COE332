@@ -1,0 +1,142 @@
+[
+    {
+        "head": "snake",
+        "body": "rat-man",
+        "arms": 9,
+        "legs": 12,
+        "tails": 21
+    },
+    {
+        "head": "raven",
+        "body": "buck-wahoo",
+        "arms": 2,
+        "legs": 3,
+        "tails": 5
+    },
+    {
+        "head": "raven",
+        "body": "hyena-falcon",
+        "arms": 5,
+        "legs": 12,
+        "tails": 17
+    },
+    {
+        "head": "bunny",
+        "body": "dog-marten",
+        "arms": 4,
+        "legs": 8,
+        "tails": 12
+    },
+    {
+        "head": "bull",
+        "body": "koi-cow",
+        "arms": 2,
+        "legs": 12,
+        "tails": 14
+    },
+    {
+        "head": "bunny",
+        "body": "deer-chow",
+        "arms": 3,
+        "legs": 11,
+        "tails": 14
+    },
+    {
+        "head": "raven",
+        "body": "hermit-rabbit",
+        "arms": 10,
+        "legs": 3,
+        "tails": 13
+    },
+    {
+        "head": "bull",
+        "body": "bug-oriole",
+        "arms": 5,
+        "legs": 6,
+        "tails": 11
+    },
+    {
+        "head": "bull",
+        "body": "parrot-leech",
+        "arms": 10,
+        "legs": 10,
+        "tails": 20
+    },
+    {
+        "head": "bull",
+        "body": "bunny-bee",
+        "arms": 9,
+        "legs": 12,
+        "tails": 21
+    },
+    {
+        "head": "bull",
+        "body": "hog-bedbug",
+        "arms": 8,
+        "legs": 8,
+        "tails": 16
+    },
+    {
+        "head": "snake",
+        "body": "frog-burro",
+        "arms": 5,
+        "legs": 3,
+        "tails": 8
+    },
+    {
+        "head": "bunny",
+        "body": "martin-prawn",
+        "arms": 4,
+        "legs": 4,
+        "tails": 8
+    },
+    {
+        "head": "bull",
+        "body": "goose-gar",
+        "arms": 4,
+        "legs": 10,
+        "tails": 14
+    },
+    {
+        "head": "bunny",
+        "body": "krill-alien",
+        "arms": 5,
+        "legs": 8,
+        "tails": 13
+    },
+    {
+        "head": "bull",
+        "body": "imp-dragon",
+        "arms": 9,
+        "legs": 11,
+        "tails": 20
+    },
+    {
+        "head": "bunny",
+        "body": "krill-ghoul",
+        "arms": 7,
+        "legs": 11,
+        "tails": 18
+    },
+    {
+        "head": "snake",
+        "body": "lion-wombat",
+        "arms": 7,
+        "legs": 3,
+        "tails": 10
+    },
+    {
+        "head": "bunny",
+        "body": "boar-gull",
+        "arms": 2,
+        "legs": 4,
+        "tails": 6
+    },
+    {
+        "head": "snake",
+        "body": "hornet-ewe",
+        "arms": 2,
+        "legs": 5,
+        "tails": 7
+    }
+]

@@ -1,0 +1,142 @@
+[
+    {
+        "head": "raven",
+        "body": "shiner-goat",
+        "arms": 2,
+        "legs": 6,
+        "tails": 8
+    },
+    {
+        "head": "snake",
+        "body": "burro-impala",
+        "arms": 8,
+        "legs": 9,
+        "tails": 17
+    },
+    {
+        "head": "bunny",
+        "body": "bug-gator",
+        "arms": 6,
+        "legs": 9,
+        "tails": 15
+    },
+    {
+        "head": "bunny",
+        "body": "bass-sloth",
+        "arms": 10,
+        "legs": 12,
+        "tails": 22
+    },
+    {
+        "head": "snake",
+        "body": "jaguar-pug",
+        "arms": 4,
+        "legs": 6,
+        "tails": 10
+    },
+    {
+        "head": "raven",
+        "body": "imp-hare",
+        "arms": 8,
+        "legs": 9,
+        "tails": 17
+    },
+    {
+        "head": "bunny",
+        "body": "dingo-drake",
+        "arms": 2,
+        "legs": 9,
+        "tails": 11
+    },
+    {
+        "head": "bunny",
+        "body": "gnat-serval",
+        "arms": 8,
+        "legs": 6,
+        "tails": 14
+    },
+    {
+        "head": "bunny",
+        "body": "hare-urchin",
+        "arms": 10,
+        "legs": 3,
+        "tails": 13
+    },
+    {
+        "head": "bunny",
+        "body": "alpaca-gar",
+        "arms": 8,
+        "legs": 3,
+        "tails": 11
+    },
+    {
+        "head": "snake",
+        "body": "sponge-tahr",
+        "arms": 8,
+        "legs": 9,
+        "tails": 17
+    },
+    {
+        "head": "bunny",
+        "body": "ghost-bat",
+        "arms": 10,
+        "legs": 3,
+        "tails": 13
+    },
+    {
+        "head": "bull",
+        "body": "jay-toad",
+        "arms": 10,
+        "legs": 12,
+        "tails": 22
+    },
+    {
+        "head": "bull",
+        "body": "joey-seal",
+        "arms": 8,
+        "legs": 9,
+        "tails": 17
+    },
+    {
+        "head": "bunny",
+        "body": "bedbug-chimp",
+        "arms": 10,
+        "legs": 6,
+        "tails": 16
+    },
+    {
+        "head": "bull",
+        "body": "hornet-man",
+        "arms": 8,
+        "legs": 6,
+        "tails": 14
+    },
+    {
+        "head": "bunny",
+        "body": "bengal-cub",
+        "arms": 6,
+        "legs": 6,
+        "tails": 12
+    },
+    {
+        "head": "snake",
+        "body": "lion-fly",
+        "arms": 6,
+        "legs": 3,
+        "tails": 9
+    },
+    {
+        "head": "bull",
+        "body": "tarpon-impala",
+        "arms": 8,
+        "legs": 3,
+        "tails": 11
+    },
+    {
+        "head": "bunny",
+        "body": "tomcat-satyr",
+        "arms": 2,
+        "legs": 6,
+        "tails": 8
+    }
+]
