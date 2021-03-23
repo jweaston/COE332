@@ -1,0 +1,182 @@
+[
+    {
+        "head": "raven",
+        "body": "bobcat-hornet",
+        "arms": 4,
+        "legs": 9,
+        "tails": 13,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "6f7efec6-c15e-4f98-b5d3-ce3db4e2d7de"
+    },
+    {
+        "head": "bull",
+        "body": "panda-gopher",
+        "arms": 2,
+        "legs": 3,
+        "tails": 5,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "d07b0333-1115-4c71-b230-6d25a6d7c8b3"
+    },
+    {
+        "head": "raven",
+        "body": "viper-gecko",
+        "arms": 2,
+        "legs": 3,
+        "tails": 5,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "991deb20-70d4-4350-9f6d-95b00cf69a8d"
+    },
+    {
+        "head": "raven",
+        "body": "robin-seal",
+        "arms": 4,
+        "legs": 3,
+        "tails": 7,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "f9d03bd6-024f-47ee-b0cd-0e55683e674a"
+    },
+    {
+        "head": "bunny",
+        "body": "mouse-eagle",
+        "arms": 10,
+        "legs": 9,
+        "tails": 19,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "33812936-0a8f-4627-bbbc-ae9d0ec59c00"
+    },
+    {
+        "head": "bull",
+        "body": "whale-dassie",
+        "arms": 4,
+        "legs": 3,
+        "tails": 7,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "08ee48de-4899-42ef-88b1-0a7e1094740a"
+    },
+    {
+        "head": "raven",
+        "body": "lynx-zebra",
+        "arms": 2,
+        "legs": 9,
+        "tails": 11,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "288faf3c-59cc-470f-a497-a9e70f379404"
+    },
+    {
+        "head": "snake",
+        "body": "hornet-eagle",
+        "arms": 4,
+        "legs": 3,
+        "tails": 7,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "cc586f3e-9ad8-41b6-a2da-84fb99e56e4c"
+    },
+    {
+        "head": "snake",
+        "body": "dove-eel",
+        "arms": 10,
+        "legs": 9,
+        "tails": 19,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "8a9cf3aa-65f0-4f5e-a173-bb62003455ea"
+    },
+    {
+        "head": "bull",
+        "body": "caiman-magpie",
+        "arms": 2,
+        "legs": 12,
+        "tails": 14,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "124f95e9-c86b-4988-a0d2-fd6f689350d5"
+    },
+    {
+        "head": "snake",
+        "body": "beagle-vervet",
+        "arms": 6,
+        "legs": 9,
+        "tails": 15,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "169cdafc-6ff5-4e0c-a5c7-db24883c0fda"
+    },
+    {
+        "head": "bunny",
+        "body": "pig-turtle",
+        "arms": 4,
+        "legs": 3,
+        "tails": 7,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "54159a4c-fb4e-4593-870f-572da9dbdee8"
+    },
+    {
+        "head": "snake",
+        "body": "feline-ferret",
+        "arms": 2,
+        "legs": 6,
+        "tails": 8,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "76dbefb1-4ffa-4e01-ae34-97a3b0645496"
+    },
+    {
+        "head": "snake",
+        "body": "asp-krill",
+        "arms": 10,
+        "legs": 6,
+        "tails": 16,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "bb974030-4f42-48e2-a1f7-5754d69ca495"
+    },
+    {
+        "head": "snake",
+        "body": "bedbug-locust",
+        "arms": 6,
+        "legs": 3,
+        "tails": 9,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "82ca8f56-cd8e-4fed-b18d-df6077d624c7"
+    },
+    {
+        "head": "bull",
+        "body": "hyena-burro",
+        "arms": 10,
+        "legs": 12,
+        "tails": 22,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "a1bff2b7-5d04-43d3-8c30-45e31ee4157f"
+    },
+    {
+        "head": "bull",
+        "body": "earwig-raven",
+        "arms": 4,
+        "legs": 9,
+        "tails": 13,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "b5f39f7f-5e96-44c8-b0ce-18492123eca9"
+    },
+    {
+        "head": "bunny",
+        "body": "yak-foal",
+        "arms": 2,
+        "legs": 3,
+        "tails": 5,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "aef213d9-0e9a-48cc-8933-1db9c53917f3"
+    },
+    {
+        "head": "bull",
+        "body": "lamb-racer",
+        "arms": 10,
+        "legs": 3,
+        "tails": 13,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "eb96bc93-b1b7-40db-ba36-fd8ba89dbb9c"
+    },
+    {
+        "head": "snake",
+        "body": "hound-earwig",
+        "arms": 4,
+        "legs": 12,
+        "tails": 16,
+        "created_on": "2021-03-23 14:01:25",
+        "uid": "4692904d-1a19-4536-bfa3-c561778780bf"
+    }
+]
