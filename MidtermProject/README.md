@@ -1,51 +1,60 @@
-# Homework 2
+# Midterm
 ---
-generate\_animals.py randomly generates 20 animal hybrids and stores them in a json that lists out their features. It takes a parameter that is the name of the file you wish to write to.  
+app.py is the python file which continues the routes to access data about the moreau animals. The Dockerfile has instructions when creating the docker image and container. The data_file.json is the data file with 100 moreau animals which the container will access through flask. The consumer_requestor.py file is a consumer which accesses and consumes data from another student's url. The requirements.txt file tells the docker which version of Flask is needed. 
 
-read\_animals.py prints out 1 randomly selected animal from the json file made using. It then will choose to random parents from the list and will breed to make a child, which combines the heads and bodies of the parents and has the average number of arms and legs from the parents and the number of tails is the sum of the number of arms and legs. It takes the file name as a parameter when called. 
+animals\_consumer.py querys the web server for data from the date_file.json about the animals
 
 ---
-## Downloading and Running Directly
-Download the files by getting the files off of github
+
+## How to the run the Container and use th urls
+The docker-compose file already contains all the commands needed to build your image and run the container. To do so type in the following code:
 ```
-[isp02]$ wget https://raw.githubusercontent.com/jweaston/COE332/main/homework02/generate_animals.py
-[isp02]$ wget https://raw.githubusercontent.com/jweaston/COE332/main/homework02/read_animals.py
-[isp02]$ wget https://raw.githubusercontent.com/jweaston/COE332/main/homework02/test_read_animals.py
-[isp02]$ wget https://raw.githubusercontent.com/jweaston/COE332/main/homework02/Dockerfile
+[isp02]$ docker-compose -p jweaston up
 ```
-First generate\_animals.py nameOfFile.json and read\_animals.py naomeOfFile.json (and also test\_read\_animals.py if you want)
+Check it has been made by using docker ps
 ```
-[isp02]$ chmod +rx generate_animals.py
-[isp02]$ chmod +rx read_animals.py
-[isp02]$ chmod +rx test_read_animals.py
+[isp02]$ docker ps
 ```
-Then to run directly without making a container
+Now you should be able to curl into the flask using the container that is running. Check it using the animals route
 ```
-[isp02]$ python3 generate_animals.py animals.json
-[isp02]$ python3 read_animals.py animals.json
-[isp02]$ python3 test_read_animals.py
+[isp02]$ curl localhost:5009
 ```
-## How to Build Image with Dockerfile 
-The docker file already contains all the commands needed to build your image. To do so type in the following code:
+This should initialize the database
+
+To access specific animal you can use it's uid with the route localhost:5009/returnAnimal?uid= '\<uid of animal\>'. Here are some examples.
 ```
-[isp02]$ docker build -t jweaston/json-parser:1.0 .
+[isp02]$ curl localhost:5009/returnAnimal?uid=6f7efec6-c15e-4f98-b5d3-ce3db4e2d7de 
+[isp02]$ curl localhost:5009/returnAnimal?uid=d07b0333-1115-4c71-b230-6d25a6d7c8b3
 ```
-Check it has been made by using docker images
+To access edit animals with a certain uid use the url localhost:5009/editAnimal?uid=\<numberoflegs\>&\<attribute\>=\<value\>. Here are some examples.
 ```
-[isp02]$ docker images
+[isp02]$ curl localhost:5009/editAnimal?uid=eb96bc93-b1b7-40db-ba36-fd8ba89dbb9c&body=lion-snake
+[isp02]$ curl localhost:5009/editAnimal?uid=d07b0333-1115-4c71-b230-6d25a6d7c8b3c&head=bird
 ```
-## How to the run the scripts in the Container
-Run the containr created by the image 
+To get the total number of animals use the url localhost:5009/totalCount. 
 ```
-[isp02]$ docker run --rm -it jweaston/json-parser:1.0 /bin/bash
+[isp02]$ curl localhost:5009/totalCount
 ```
-The files will be in the container, run them like you would directly
+
+To get the average number of legs of all animals use the url localhost:5009/avgLegs. 
 ```
-[root@p6cf05afdfdc /]# generate_animals.py animals.json
-[root@p6cf05afdfdc /]# read_animals.py animals.json
+[isp02]$ curl localhost:5009/avgLegs
 ```
-## How to run the unit test 
-Leave the container and run the test\_read\_animals.py file
+
+To query a date range use the url localhost:5009/queryDates?start=\<startDate in YYYY-MM-DD format\>&\end=\<endDate in YYYY-MM-DD format\>. 
 ```
-[isp02]$ python3 test_read_animals.py
+[isp02]$ curl localhost:5009/queryDates?start=2021-03-23&end=2021-03-24 
 ```
+
+To remove animals created in a date range use the url localhost:5009/rmDates?start=\<startDate in YYYY-MM-DD format\>&\end=\<endDate in YYYY-MM-DD format\>. 
+```
+[isp02]$ curl localhost:5009/rmDates?start=2021-03-23&end=2021-03-24 
+```
+
+## How to run the Consumer
+The consumer file will run some test urls listed above. After the container is running call the consumer with the following line:
+```
+[isp02]$ python3 animals_requestor.py
+```
+## Exiting
+To stop the container press ctrl+c to end the container

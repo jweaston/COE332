@@ -9,12 +9,12 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def init():
     with open("../data_file.json", "r") as json_file:
-            userdata = json.load(json_file)
-            index = 0
-            rd.flushdb()
-            for animal in userdata:
-                rd.hmset('k'+str(index), animal)
-                index += 1
+        userdata = json.load(json_file)
+        index = 0
+        rd.flushdb()
+        for animal in userdata:
+            rd.hmset(animal['uid'], animal)
+            index += 1
     return 'Data base initialized \n'
     
 @app.route('/reset', methods=['GET'])
@@ -24,7 +24,7 @@ def reset():
         index = 0
         rd.flushdb()
         for animal in userdata:
-            rd.set('k'+str(index), animal)
+            rd.hmset(animal['uid'], animal)
             index += 1
     return 'Data base reset \n'
 
@@ -38,15 +38,15 @@ def avgLegs():
 
 @app.route('/queryDates', methods=['GET'])
 def queryDates():
-    startDate = datetime.datetime.strptime(request.args.get('start'), '%Y-%m-%d %H:%M:%S')
-    endDate = datetime.datetime.strptime(request.args.get('end'), '%Y-%m-%d %H:%M:%S')
+    startDate = datetime.datetime.strptime(request.args.get('start'), '%Y-%m-%d')
+    endDate = datetime.datetime.strptime(request.args.get('end'), '%Y-%m-%d')
 
     return json.dumps(str(getDateQuery(startDate, endDate)) + '\n')
 
 @app.route('/rmDates', methods=['GET'])
 def rmDates():
-    startDate = datetime.datetime.strptime(request.args.get('start'), '%Y-%m-%d %H:%M:%S')
-    endDate = datetime.datetime.strptime(request.args.get('end'), '%Y-%m-%d %H:%M:%S')
+    startDate = datetime.datetime.strptime(request.args.get('start'), '%Y-%m-%d')
+    endDate = datetime.datetime.strptime(request.args.get('end'), '%Y-%m-%d')
     rmDateQuery(startDate, endDate)
     return 'Aniamls remove \n'
 
@@ -58,7 +58,7 @@ def  returnAnimal():
 @app.route('/editAnimal', methods=['GET'])
 def  editAnimal():
     uid = request.args.get('uid')
-    return json.dumps(str(returnEditedAnimal(uid)) + '\n')
+    return json.dumps(str(returnEditedAnimal(uid, request.args.lists())) + '\n')
 
 def getCount():
     size = rd.dbsize()
@@ -81,13 +81,19 @@ def getDateQuery(start, end):
 
 def rmDateQuery(start,end):
     for key in rd.scan_iter():
-        if(datetime.datetime.strptime(rd.hget(key, 'created_on')) > start and datetime.datetime.strptime(rd.hget(key, 'created_on')) < end):
-            rd.hdel(key)
+        if(datetime.datetime.strptime(rd.hget(key, 'created_on'), '%Y-%m-%d %H:%M:%S') > start and datetime.datetime.strptime(rd.hget(key, 'created_on'), '%Y-%m-%d %H:%M:%S') < end):
+            rd.delete(key)
     
 def getAnimal(uid):
     return rd.hgetall(uid)
 
-def returnEditedAnimal(uid):
+def returnEditedAnimal(uid, attributeList):
+    #testList = []
+    for attribute in attributeList:
+        #testList.append(attribute[1][0])
+        rd.hset(uid, attribute[0], attribute[1][0])
+    #return testList
+    rd.hset(uid, 'created_on', '{:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now()))
     return rd.hgetall(uid)
 
 
