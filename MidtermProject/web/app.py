@@ -11,6 +11,7 @@ def init():
     with open("../data_file.json", "r") as json_file:
             userdata = json.load(json_file)
             index = 0
+            rd.flushdb()
             for animal in userdata:
                 rd.hmset('k'+str(index), animal)
                 index += 1
@@ -21,8 +22,9 @@ def reset():
     with open("../data_file.json", "r") as json_file:
         userdata = json.load(json_file)
         index = 0
+        rd.flushdb()
         for animal in userdata:
-            rd.set(index, animal)
+            rd.set('k'+str(index), animal)
             index += 1
     return 'Data base reset \n'
 
@@ -35,14 +37,14 @@ def avgLegs():
     return json.dumps(str(getAvgLegs()) + '\n')
 
 @app.route('/queryDates', methods=['GET'])
-def queryDates(htype):
+def queryDates():
     startDate = datetime.datetime.strptime(request.args.get('start'), '%Y-%m-%d %H:%M:%S')
     endDate = datetime.datetime.strptime(request.args.get('end'), '%Y-%m-%d %H:%M:%S')
 
     return json.dumps(str(getDateQuery(startDate, endDate)) + '\n')
 
 @app.route('/rmDates', methods=['GET'])
-def rmDates(htype):
+def rmDates():
     startDate = datetime.datetime.strptime(request.args.get('start'), '%Y-%m-%d %H:%M:%S')
     endDate = datetime.datetime.strptime(request.args.get('end'), '%Y-%m-%d %H:%M:%S')
     rmDateQuery(startDate, endDate)
@@ -65,22 +67,20 @@ def getCount():
 def getAvgLegs():
     totalLegs = 0
     size = rd.dbsize()
-    for key in rd.keys(pattern='*'):
-        print(key)
-        #totalLegs += rd.hget(key, 'legs')
+    for key in rd.scan_iter():
+        totalLegs += int(rd.hget(key, 'legs'))
     return totalLegs/size
 
 def getDateQuery(start, end):
     returnValues = []
-    for key in rd.keys(pattern='*'):
-        if(datetime.datetime.strptime(rd.hget(key, 'created_on')) > start and datetime.datetime.strptime(rd.hget(key, 'created_on')) < end):
+    for key in rd.scan_iter():
+        if(datetime.datetime.strptime(rd.hget(key, 'created_on'), '%Y-%m-%d %H:%M:%S') > start and datetime.datetime.strptime(rd.hget(key, 'created_on'), '%Y-%m-%d %H:%M:%S') < end):
             returnValues.append(rd.hgetall(key))
 
     return returnValues
 
-
 def rmDateQuery(start,end):
-    for key in rd.keys(pattern='*'):
+    for key in rd.scan_iter():
         if(datetime.datetime.strptime(rd.hget(key, 'created_on')) > start and datetime.datetime.strptime(rd.hget(key, 'created_on')) < end):
             rd.hdel(key)
     
