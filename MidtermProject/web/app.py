@@ -30,18 +30,18 @@ def reset():
 
 @app.route('/totalCount', methods=['GET'])
 def totalCount():
-    return json.dumps(str(getCount()) + '\n') 
+    return json.dumps(str(getCount())) 
 
 @app.route('/avgLegs', methods=['GET'])
 def avgLegs():
-    return json.dumps(str(getAvgLegs()) + '\n')
+    return json.dumps(str(getAvgLegs()))
 
 @app.route('/queryDates', methods=['GET'])
 def queryDates():
     startDate = datetime.datetime.strptime(request.args.get('start'), '%Y-%m-%d')
     endDate = datetime.datetime.strptime(request.args.get('end'), '%Y-%m-%d')
 
-    return json.dumps(str(getDateQuery(startDate, endDate)) + '\n')
+    return json.dumps(str(getDateQuery(startDate, endDate)))
 
 @app.route('/rmDates', methods=['GET'])
 def rmDates():
@@ -53,12 +53,12 @@ def rmDates():
 @app.route('/returnAnimal', methods=['GET'])
 def  returnAnimal():
     uid = request.args.get('uid')
-    return json.dumps(str(getAnimal(uid)) + '\n' )
+    return json.dumps(str(getAnimal(uid)))
 
 @app.route('/editAnimal', methods=['GET'])
 def  editAnimal():
     uid = request.args.get('uid')
-    return json.dumps(str(returnEditedAnimal(uid, request.args.lists())) + '\n')
+    return json.dumps(str(returnEditedAnimal(uid, request.args.lists())))
 
 def getCount():
     size = rd.dbsize()
