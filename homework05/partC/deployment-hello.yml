@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello
+  labels:
+    name: hello
+    greeting: personalized
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: hello
+      greeting: personalized
+  template:
+    metadata:
+      labels:
+        name: hello
+        greeting: personalized
+    spec:
+      containers:
+        - name: hello
+          image: ubuntu:18.04
+          env: 
+            - name: "NAME"
+              value: "James"
+            - name: POD_IP
+              valueFrom: 
+                fieldRef:
+                  fieldPath: status.podIP
+          command: ['sh', '-c', 'echo "Hello, $NAME from IP $POD_IP" && sleep 3600']
+          imagePullPolicy: Always

@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-deployment
+  labels:
+    app: hello-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-app
+  template:
+    metadata:
+      labels:
+        app: hello-app
+    spec:
+      containers:
+        - name: hellos
+          image: ubuntu:18.04
+          command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600']
+          imagePullPolicy: Always
