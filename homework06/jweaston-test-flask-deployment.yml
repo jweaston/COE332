@@ -24,10 +24,12 @@ spec:
       containers:
         - name: jweaston-flask
           imagePullPolicy: Always
-          image: jstubbs/hello-flask
+          image: jweaston/kubernetes_animals:latest
           env:
           - name: FLASK_APP
             value: "app.py"
+          - name: REDIS_IP
+            value: "10.244.13.225"
           ports:
           - name: http
             containerPort: 5000

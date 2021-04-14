@@ -1,14 +1,18 @@
 import json
 import redis
 import datetime
+import os 
 from flask import Flask, request
 
-rd = redis.StrictRedis(host='redis', port=6379, db=0)
+redis_ip = os.environ.get('REDIS_IP')
+if not redis_ip:
+    raise Exception()
+rd = redis.StrictRedis(host=redis_ip, port=6379, db=0)
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def init():
-    with open("../data_file.json", "r") as json_file:
+    with open("data_file.json", "r") as json_file:
         userdata = json.load(json_file)
         index = 0
         rd.flushdb()
@@ -19,7 +23,7 @@ def init():
     
 @app.route('/reset', methods=['GET'])
 def reset():
-    with open("../data_file.json", "r") as json_file:
+    with open("data_file.json", "r") as json_file:
         userdata = json.load(json_file)
         index = 0
         rd.flushdb()
