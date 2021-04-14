@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jweaston-test-redis-deployment
+  labels:
+    app: jweaston-test-redis
+    username: jweaston 
+    env: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jweaston-test-redis
+      username: jweaston
+      env: test
+  template: 
+    metadata:
+      labels:
+        app: jweaston-test-redis
+        username: jweaston
+        env: test
+    spec:
+      containers:
+        - name: redis
+          image: redis:5.0.0
+          volumeMounts:
+          - name: jweaston-redis-data
+            mountPath: "/data"
+      volumes:
+      - name: jweaston-redis-data
+        persistentVolumeClaim:
+          claimName: jweaston-redis-data

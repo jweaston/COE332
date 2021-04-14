@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jweaston-test-flask-deployment
+  labels:
+    app: jweaston-flask
+    username: jweaston
+    env: test
+spec:
+  replicas: 
+  selector:
+    matchLabels:
+      app: jweaston-flask
+      username: jweaston
+      env: test
+  template:
+    metadata:
+      labels:
+        app: jweaston-flask
+        username: jweaston
+        env: test
+    spec:
+      containers:
+        - name: jweaston-flask
+          imagePullPolicy: Always
+          image: jstubbs/hello-flask
+          env:
+          - name: FLASK_APP
+            value: "app.py"
+          ports:
+          - name: http
+            containerPort: 5000
