@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jweaston-hw7-worker-deployment
+  labels:
+    app: jweaston-worker
+    username: jweaston
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: jweaston-hw7-worker
+  template:
+    metadata:
+      labels:
+        app: jweaston-hw7-worker
+        username: jweaston
+    spec:
+      containers:
+        - name: jweaston-hw7-worker
+          imagePullPolicy: Always
+          image: jweaston/flask-hw7:latest
+          command: ["python", "worker.py"]
+          env:
+          - name: REDIS_IP
+            value: "10.98.243.144"

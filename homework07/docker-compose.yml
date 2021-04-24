@@ -1,0 +1,32 @@
+---
+version: "3"
+
+networks:
+  hw7:
+    driver: bridge
+
+services:
+  # this runs the web server
+  flask:
+    container_name: main_web_jweaston
+    command: "api.py"
+    ports:
+      - 5000:5000
+    environment:
+      REDIS_IP: "reids"
+    networks:
+      - hw7
+  # this runs the redis server
+  redis:
+    image: redis:latest
+    networks:
+      - hw7
+  # worker
+  worker: 
+    image: jweaston/flask_hw7
+    command: "worker.py"
+    enironment:
+      REDIS_IP: "redis"
+    networks:
+      - hw7
+...

@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jweaston-hw7-redis-deployment
+  labels:
+    app: jweaston-hw7-redis
+    username: jweaston 
+    env: hw7
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jweaston-hw7-redis
+      username: jweaston
+      env: hw7
+  template: 
+    metadata:
+      labels:
+        app: jweaston-hw7-redis
+        username: jweaston
+        env: hw7
+    spec:
+      containers:
+        - name: redis
+          image: redis:5.0.0
+          volumeMounts:
+          - name: jweaston-hw7-redis-data
+            mountPath: "/data"
+      volumes:
+      - name: jweaston-hw7-redis-data
+        persistentVolumeClaim:
+          claimName: jweaston-hw7-redis-data
