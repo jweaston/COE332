@@ -25,3 +25,8 @@ spec:
           env:
           - name: REDIS_IP
             value: "10.98.243.144"
+          - name: WORKER_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+                
