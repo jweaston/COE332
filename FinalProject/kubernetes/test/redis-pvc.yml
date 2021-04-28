@@ -5,7 +5,7 @@ metadata:
   name: jweaston-hw7-redis-data
   labels:
     username: jweaston
-    env: hw7
+    env: test
 spec:
   accessModes:
     - ReadWriteOnce

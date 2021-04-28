@@ -6,6 +6,7 @@ metadata:
   labels:
     app: jweaston-worker
     username: jweaston
+    env: test
 spec:
   replicas: 2
   selector:

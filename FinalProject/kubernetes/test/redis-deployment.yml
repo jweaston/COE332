@@ -6,7 +6,7 @@ metadata:
   labels:
     app: jweaston-hw7-redis
     username: jweaston 
-    env: hw7
+    env: test
 spec:
   replicas: 1
   selector:
