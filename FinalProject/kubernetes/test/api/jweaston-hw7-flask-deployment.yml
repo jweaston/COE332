@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jweaston-hw7-flask-deployment
+  labels:
+    app: jweaston-flask
+    username: jweaston
+    env: test
+spec:
+  replicas: 
+  selector:
+    matchLabels:
+      app: jweaston-flask
+      username: jweaston
+      env: test
+  template:
+    metadata:
+      labels:
+        app: jweaston-flask
+        username: jweaston
+        env: test
+    spec:
+      containers:
+        - name: jweaston-flask
+          imagePullPolicy: Always
+          image: jweaston/flask-hw7:latest
+          env:
+          - name: FLASK_APP
+            value: "api.py"
+          - name: REDIS_IP
+            value: "10.98.243.144"
+          ports:
+          - name: http
+            containerPort: 5000

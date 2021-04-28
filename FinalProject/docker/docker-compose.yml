@@ -1,0 +1,23 @@
+---
+version: "3"
+
+services:
+  # this runs the web server
+  web:
+    build: .
+    container_name: main_web_jweaston
+    ports:
+      - 5009:5000
+    volumes: 
+      - ./data/data_file.json:/data_file.json
+  # this runs the redis server
+  redis:
+    image: redis:latest
+    ports: 
+      - 6389:6379
+    volumes: 
+      - ./config/redis.conf:/redis.conf
+    command: ["redis-server", "/redis.conf"]
+
+
+...
