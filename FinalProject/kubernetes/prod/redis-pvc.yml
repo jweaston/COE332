@@ -5,7 +5,7 @@ metadata:
   name: jweaston-final-redis-data
   labels:
     username: jweaston
-    env: test
+    env: prod
 spec:
   accessModes:
     - ReadWriteOnce

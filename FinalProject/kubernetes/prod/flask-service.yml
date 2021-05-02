@@ -5,13 +5,13 @@ metadata:
   name: jweaston-final-flask-service
   labels:
     username: jweaston
-    env: test
+    env: prod
 spec:
   type: ClusterIP
   selector:
     app: jweaston-flask
     username: jweaston
-    env: test
+    env: prod
   ports:
   - name: jweaston-flask
     port: 5000

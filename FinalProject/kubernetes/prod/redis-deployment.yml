@@ -6,20 +6,20 @@ metadata:
   labels:
     app: jweaston-final-redis
     username: jweaston 
-    env: test
+    env: prod
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: jweaston-final-redis
       username: jweaston
-      env: test
+      env: prod
   template: 
     metadata:
       labels:
         app: jweaston-final-redis
         username: jweaston
-        env: test
+        env: prod
     spec:
       containers:
         - name: redis

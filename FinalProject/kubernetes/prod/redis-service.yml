@@ -5,13 +5,13 @@ metadata:
   name: jweaston-final-redis-service
   labels:
     username: jweaston
-    env: test
+    env: prod
 spec:
   type: ClusterIP
   selector:
     app: jweaston-final-redis
     username: jweaston
-    env: test
+    env: prod
   ports:
   - name: redis-database
     port: 6379

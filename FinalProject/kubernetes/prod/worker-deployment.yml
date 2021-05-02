@@ -2,26 +2,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jweaston-hw7-worker-deployment
+  name: jweaston-final-worker-deployment
   labels:
     app: jweaston-worker
     username: jweaston
-    env: test
+    env: prod
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: jweaston-hw7-worker
+      app: jweaston-final-worker
   template:
     metadata:
       labels:
-        app: jweaston-hw7-worker
+        app: jweaston-final-worker
         username: jweaston
     spec:
       containers:
-        - name: jweaston-hw7-worker
+        - name: jweaston-final-worker
           imagePullPolicy: Always
-          image: jweaston/flask-hw7:latest
+          image: jweaston/final-project:latest
           command: ["python", "worker.py"]
           env:
           - name: REDIS_IP

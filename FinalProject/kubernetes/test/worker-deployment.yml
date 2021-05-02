@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jweaston-final-worker-deployment
+  labels:
+    app: jweaston-worker
+    username: jweaston
+    env: test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: jweaston-final-worker
+  template:
+    metadata:
+      labels:
+        app: jweaston-final-worker
+        username: jweaston
+    spec:
+      containers:
+        - name: jweaston-final-worker
+          imagePullPolicy: Always
+          image: jweaston/final-project:latest
+          command: ["python", "worker.py"]
+          env:
+          - name: REDIS_IP
+            value: "10.98.243.144"
+          - name: WORKER_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+                
