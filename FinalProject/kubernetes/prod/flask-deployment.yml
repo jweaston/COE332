@@ -6,20 +6,20 @@ metadata:
   labels:
     app: jweaston-flask
     username: jweaston
-    env: test
+    env: prod
 spec:
   replicas: 
   selector:
     matchLabels:
       app: jweaston-flask
       username: jweaston
-      env: test
+      env: prod
   template:
     metadata:
       labels:
         app: jweaston-flask
         username: jweaston
-        env: test
+        env: prod
     spec:
       containers:
         - name: jweaston-flask

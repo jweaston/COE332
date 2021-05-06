@@ -21,11 +21,11 @@ spec:
       containers:
         - name: jweaston-final-worker
           imagePullPolicy: Always
-          image: jweaston/final-project:latest
+          image: jweaston/final-project-wrk:latest
           command: ["python", "worker.py"]
           env:
           - name: REDIS_IP
-            value: "10.98.243.144"
+            value: "10.105.127.49"
           - name: WORKER_IP
             valueFrom:
               fieldRef:

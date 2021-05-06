@@ -8,8 +8,11 @@ redis_ip = os.environ.get('REDIS_IP')
 if not redis_ip:
     raise Exception()
 
+
 q = HotQueue("queue", host=redis_ip, port=6379, db=1)
-rd = StrictRedis(host=redis_ip, port=6379, db=0)
+jobdb = StrictRedis(host=redis_ip, port=6379, db=0)
+propertydb = StrictRedis(host=redis_ip, port=6379, db=2)
+
 
 def _generate_jid():
     return str(uuid.uuid4())
@@ -32,7 +35,7 @@ def _instantiate_job(jid, status, start, end):
 
 def _save_job(job_key, job_dict):
     """Save a job object in the Redis database."""
-    rd.hmset(job_key, job_dict)
+    jobdb.hmset(job_key, job_dict)
 
 def _queue_job(jid):
     """Add a job to the redis queue."""
@@ -50,7 +53,7 @@ def add_job(start, end, status="submitted"):
 
 def update_job_status(jid, new_status, worker_ip):
     """Update the status of job with job id `jid` to status `status`."""
-    jid, status, start, end = rd.hmget(_generate_job_key(jid), 'id', 'status', 'start', 'end')
+    jid, status, start, end = jobdb.hmget(_generate_job_key(jid), 'id', 'status', 'start', 'end')
     job = _instantiate_job(jid, status, start, end)
     if job:
         job['status'] = new_status

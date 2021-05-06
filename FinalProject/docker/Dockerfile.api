@@ -1,8 +1,9 @@
-FROM ubuntu:latest
-RUN apt-get update -y
-RUN apt-get install -y python-pip python-dev build-essential
-COPY . /app
-WORKDIR /app
+FROM python:3.6.13
+ADD requirements.txt /requirements.txt
 RUN pip install -r requirements.txt
+COPY ./src/Housing_data.json /app/
+COPY ./src/api.py /app/
+COPY ./src/jobs.py /app/
+WORKDIR /app
 ENTRYPOINT ["python"]
 CMD ["api.py"]

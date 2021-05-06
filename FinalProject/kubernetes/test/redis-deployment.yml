@@ -23,10 +23,11 @@ spec:
     spec:
       containers:
         - name: redis
-          image: redis:5.0.0
+          image: jweaston/final-project-db:latest
           volumeMounts:
           - name: jweaston-final-redis-data
             mountPath: "/data"
+          command: ["redis-server"]
       volumes:
       - name: jweaston-final-redis-data
         persistentVolumeClaim:

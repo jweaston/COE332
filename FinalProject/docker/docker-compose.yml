@@ -2,22 +2,27 @@
 version: "3"
 
 services:
-  # this runs the web server
-  web:
-    build: .
-    container_name: main_web_jweaston
-    ports:
-      - 5009:5000
-    volumes: 
-      - ./data/data_file.json:/data_file.json
-  # this runs the redis server
-  redis:
-    image: redis:latest
+  jweaston-redis:
+    image: jweaston/final-project-db:latest
+    container_name: jweaston-redis
     ports: 
       - 6389:6379
-    volumes: 
-      - ./config/redis.conf:/redis.conf
-    command: ["redis-server", "/redis.conf"]
+    user: "827385:815499"
+    volumes:
+      - ../data/:/data/
 
+  jweaston-api:
+    image: jweaston/final-project-api:latest
+    container_name: jweaston-api
+    environment: 
+      - REDIS_IP = jweaston-redis
+    ports:
+      - 5009:5000
+
+  jweaston-worker:
+    image: jweaston/final-project-wrk:latest
+    container_name: jweaston-worker
+    environment: 
+      - REDIS_IP = jweaston-redis
 
 ...

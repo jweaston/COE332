@@ -6,30 +6,30 @@ metadata:
   labels:
     app: jweaston-flask
     username: jweaston
-    env: prod
+    env: test
 spec:
   replicas: 
   selector:
     matchLabels:
       app: jweaston-flask
       username: jweaston
-      env: prod
+      env: test
   template:
     metadata:
       labels:
         app: jweaston-flask
         username: jweaston
-        env: prod
+        env: test
     spec:
       containers:
         - name: jweaston-flask
           imagePullPolicy: Always
-          image: jweaston/final-project:latest
+          image: jweaston/final-project-api:latest
           env:
           - name: FLASK_APP
             value: "api.py"
           - name: REDIS_IP
-            value: "10.98.243.144"
+            value: "10.105.127.49"
           ports:
           - name: http
             containerPort: 5000
