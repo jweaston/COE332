@@ -42,12 +42,12 @@ def post_job():
             job = request.get_json(force=True)
         except Exception as e:
             return True, json.dumps({'status': "Error", 'message': 'Invalid JSON: {}.'.format(e)})
-        return json.dumps(jobs.add_job(job['start'], job['property']))
+        return json.dumps(jobs.add_job(job['start'], job['end']))
     else:
         return """
     This is  a route for POSTing jobs. Use:
 
-    curl -X POST -d '{"start": "distance", "property": <propertyID>}' localhost:5009/run
+    curl -X POST -d '{"start": "distance", "end": <propertyID>}' localhost:5009/run
     """
 
 @app.route('/jobs', methods=['GET'])
@@ -60,7 +60,11 @@ def get_jobs():
 
 @app.route('/jobs/<jobuuid>', methods=['GET'])
 def get_job(jobuuid):
-    return json.dumps(jobdb.hgetall(jobuuid), indent=4)
+    bytes_dict = jobdb.hgetall(jobuuid)
+    final_dict = {}
+    for key, value in bytes_dict.items():
+        final_dict[key.decode('utf-8')] = value.decode('utf-8')
+    return json.dumps(final_dict, indent=4)
 
 @app.route('/properties', methods=['GET'])
 def crud_properties():

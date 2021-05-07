@@ -14,10 +14,21 @@ worker_ip = os.environ.get('WORKER_IP')
 if not worker_ip:
     raise Exception()
 
+def latlon_distance(lat,lon):
+    R = 6373.0
+    lat = radians(lat)
+    lon = radians(lon)
+    dlon = UT_lon - lon
+    dlat = UT_lat - lat
+    a = sin(dlat/2)**2 + cos(lat) * cos(UT_lat) * (sin(dlon/2))**2
+    c = 2 * atan2(sqrt(a), sqrt(1-a))
+    dist = R * c
+    return dist
+
 for jid in q.consume():
     update_job_status(jid, 'in progress', worker_ip)
     if(jobdb.hget('job.{}'.format(jid), 'start').decode('utf-8') == 'distance'):
-        pid = jobdb.hget('job.{}'.format(jid),'property').decode('utf-8')
+        pid = jobdb.hget('job.{}'.format(jid), 'end').decode('utf-8')
         query = propertydb.hget(pid, 'Address').decode('utf-8')
         payload = {
             'access_key': access_key,
@@ -38,14 +49,3 @@ for jid in q.consume():
 #     # todo - replace with real job
 #     time.sleep(15)
 #     update_job_status(jid, 'complete')
-
-def latlon_distance(lat,lon):
-    R = 6373.0
-    lat = radians(lat)
-    lon = radians(lon)
-    dlon = UT_lon - lon
-    dlat = UT_lat - lat
-    a = sin(dlat/2)**2 + cos(lat) * cos(UT_lat) * (sin(dlon/2))**2
-    c = 2 * atan2(sqrt(a), sqrt(1-a))
-    dist = R * c
-    return dist
