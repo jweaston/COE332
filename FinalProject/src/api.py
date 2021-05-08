@@ -1,6 +1,6 @@
 # api.py
 import json
-from flask import Flask, request
+from flask import Flask, request, send_file
 import jobs
 import uuid 
 
@@ -42,12 +42,19 @@ def post_job():
             job = request.get_json(force=True)
         except Exception as e:
             return True, json.dumps({'status': "Error", 'message': 'Invalid JSON: {}.'.format(e)})
-        return json.dumps(jobs.add_job(job['start'], job['end']))
+        return json.dumps(jobs.add_job(job['jtype'], json.dumps(job['selector'])))
     else:
         return """
     This is  a route for POSTing jobs. Use:
+    three types of jobs
+    Get distance, selector = property ID
+    curl -X POST -d '{"jtype": "distance", "selector": {"id": <property id>}}' localhost:5009/run
 
-    curl -X POST -d '{"start": "distance", "end": <propertyID>}' localhost:5009/run
+    Plot distance vs price = selector for properties, all for all properties
+    curl -X POST -d '{"jtype": "distvsprice", "selector": {"Neighborhood": "West Campus"}}' localhost:5009/run
+
+    Plot bed:bath radio vs price = slector for properties, all for all properties
+    curl -X POST -d '{"jtype": "ratiovsprice",  "selector": {"Property Manager": "Respace"}}' localhost:5009/run
     """
 
 @app.route('/jobs', methods=['GET'])
@@ -62,8 +69,15 @@ def get_jobs():
 def get_job(jobuuid):
     bytes_dict = jobdb.hgetall(jobuuid)
     final_dict = {}
+    jid = jobuuid[3:]
     for key, value in bytes_dict.items():
-        final_dict[key.decode('utf-8')] = value.decode('utf-8')
+        if key.decode('utf-8') == 'plot':
+            path = f'/app/{jid}.png'
+            with open(path, 'wb') as f:
+                f.write(jobdb.hget(jobuuid, 'plot'))
+            return send_file(path, mimetype='image/png', as_attachment=True)
+        else:
+            final_dict[key.decode('utf-8')] = value.decode('utf-8')
     return json.dumps(final_dict, indent=4)
 
 @app.route('/properties', methods=['GET'])
@@ -85,9 +99,16 @@ def crud_properties():
 def create_property():
     if request.method == 'POST':
         uid = 'property.{}'.format(uuid.uuid4())
-        property_data = request.get_json(force=True)
+        try:
+            property_data = request.get_json(force=True)
+        except Exception as e:
+            return True, json.dumps({'status': "Error", 'message': 'Invalid JSON: {}.'.format(e)})
         propertydb.hmset(uid, property_data)
-        return propertydb.hgetall(uid)
+        redis_dict = {}
+        redis_dict[str(uid)] = {}
+        for att in propertydb.hkeys(uid):
+            redis_dict[str(uid)][att.decode('utf-8')] = propertydb.hget(uid, att.decode('utf-8')).decode('utf-8')
+        return json.dumps(redis_dict, indent = 4)
     else:
         return """
         Example
@@ -107,56 +128,57 @@ def create_property():
         """
 
 @app.route('/properties/read', methods=['GET', 'POST'])
-def read_property():
+def read_properties():
     if request.method == 'POST':
-        if request.args.lists() == "":
-            redis_dict = {}
-            for key in propertydb.keys():
-                redis_dict[str(key.decode('utf-8'))] = {}
-                for att in ['Property Name', 'Address', 'Total Rent', 'Bed','Bath', 'Available Units', 'Neighborhood' ,'Property Manager']:
-                    redis_dict[str(key.decode('utf-8'))][att] = propertydb.hget(key, att).decode('utf-8')
-            return json.dumps(redis_dict, indent=4)
-        else:
-            redis_dict = {}
-            for key in propertydb.keys():
-                flag1 = True
-                # testList = []
-                for arg in request.args.lists():
-                    # testList.append(arg)
-                    if propertydb.hget(key, arg[0]).decode("utf-8") == str(arg[1][0]):
-                        continue
-                    else:
-                        flag1 = False
-                        break
-                if flag1:
-                    redis_dict[str(key.decode('utf-8'))] = {}
-                    for att in ['Property Name', 'Address', 'Total Rent', 'Bed','Bath', 'Available Units', 'Neighborhood' ,'Property Manager']:
-                        redis_dict[str(key.decode('utf-8'))][att] = propertydb.hget(key, att).decode('utf-8')
-                else: 
+        try:
+            property_data = request.get_json(force=True)
+        except Exception as e:
+            return True, json.dumps({'status': "Error", 'message': 'Invalid JSON: {}.'.format(e)})
+        redis_dict = {}
+        for key in propertydb.keys():
+            flag1 = True
+            # testList = []
+            for arg in property_data:
+                # testList.append(arg)
+                if propertydb.hget(key, arg).decode("utf-8") == str(property_data[arg]):
                     continue
-            # return json.dumps(testList)
-            return json.dumps(redis_dict, indent=4)
+                else:
+                    flag1 = False
+                    break
+            if flag1:
+                redis_dict[str(key.decode('utf-8'))] = {}
+                for att in propertydb.hkeys(key):
+                    redis_dict[str(key.decode('utf-8'))][att.decode('utf-8')] = propertydb.hget(key, att.decode('utf-8')).decode('utf-8')
+            else: 
+                continue
+        return json.dumps(redis_dict, indent=4)
     else:
         return """
-        curl -X POST localhost:5009/properties/read?<arg>=<parameter>&<arg>=<parameter>
+        curl -X POST -d '{'Selctor': 'Lable'}' localhost:5009/properties/read
         example:
-        curl -X POST localhost:5009/properties/read?Neighborhood=West%20Campus
+        curl -X POST -d '{"Property Manager": "Respace", "Neighborhood": "Noth Campus"}' localhost:5009/properties/read
         To get all properties:
-        curl -X POST localhost:5009/properties/read
+        curl -X POST -d '{}' localhost:5009/properties/read
         """
 @app.route('/properties/update', methods=['GET', 'POST'])
 def update_property():
     if request.method == 'POST':
         uid = request.args.get('uid')
-        property_data = request.get_json(force=True)
-        for attribute in property_data:
-            propertydb.hset(uid, attribute[0], attribute[1][0])
-        return propertydb.hgetall(uid)
+        try:
+            property_data = request.get_json(force=True)
+        except Exception as e:
+            return True, json.dumps({'status': "Error", 'message': 'Invalid JSON: {}.'.format(e)})
+        propertydb.hmset(uid, property_data)
+        redis_dict = {}
+        redis_dict[str(uid)] = {}
+        for att in propertydb.hkeys(uid):
+            redis_dict[str(uid)][att.decode('utf-8')] = propertydb.hget(uid, att.decode('utf-8')).decode('utf-8')
+        return json.dumps(redis_dict, indent = 4)
     else:
         return """
-        curl -X POST localhost:5009/properties/update?uid=<propertyID>
+        curl -X POST -d '{"key":"value"}' localhost:5009/properties/update?uid=<propertyID>
         example:
-        curl -X POST localhost:5009/properties?/update?uid=property.3d6f6346-3003-4afc-b02f-52b5e492b4c0
+        curl -X POST -d '{"Property Name": "2710 Whitis"}' localhost:5009/properties?/update?uid=property.3d6f6346-3003-4afc-b02f-52b5e492b4c0
         """    
 @app.route('/properties/delete', methods=['GET', 'POST'])
 def delete_property():
@@ -179,5 +201,5 @@ def init_database():
             propertydb.hmset('property.{}'.format(uuid.uuid4()), prop)
 
 if __name__ == '__main__':
-    init_database()
+    # init_database()
     app.run(debug=True, host='0.0.0.0')

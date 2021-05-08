@@ -20,17 +20,17 @@ def _generate_jid():
 def _generate_job_key(jid):
     return 'job.{}'.format(jid)
 
-def _instantiate_job(jid, status, start, end):
+def _instantiate_job(jid, status, jtype, selector):
     if type(jid) == str:
         return {'id': jid,
                 'status': status,
-                'start': start,
-                'end': end
+                'jtype': jtype,
+                'selector': selector
         }
     return {'id': jid.decode('utf-8'),
             'status': status.decode('utf-8'),
-            'start': start.decode('utf-8'),
-            'end': end.decode('utf-8')
+            'jtype': jtype.decode('utf-8'),
+            'selector': selector.decode('utf-8')
     }
 
 def _save_job(job_key, job_dict):
@@ -41,10 +41,10 @@ def _queue_job(jid):
     """Add a job to the redis queue."""
     q.put(jid)
 
-def add_job(start, end, status="submitted"):
+def add_job(jtype, selector, status="submitted"):
     """Add a job to the redis queue."""
     jid = _generate_jid()
-    job_dict = _instantiate_job(jid, status, start, end)
+    job_dict = _instantiate_job(jid, status, jtype, selector)
     # update call to save_job:
     _save_job(_generate_job_key(jid), job_dict)
     # update call to queue_job:
@@ -53,8 +53,8 @@ def add_job(start, end, status="submitted"):
 
 def update_job_status(jid, new_status, worker_ip):
     """Update the status of job with job id `jid` to status `status`."""
-    jid, status, start, end = jobdb.hmget(_generate_job_key(jid), 'id', 'status', 'start', 'end')
-    job = _instantiate_job(jid, status, start, end)
+    jid, status, jtype, selector = jobdb.hmget(_generate_job_key(jid), 'id', 'status', 'jtype', 'selector')
+    job = _instantiate_job(jid, status, jtype, selector)
     if job:
         job['status'] = new_status
         job['worker_ip'] = worker_ip
